@@ -1,0 +1,11 @@
+{%extends "DEMOAPP/base.html" %}
+{% block content %}
+<h2>You have been successfully logged out.</h2>
+<div class = "border-top pt-3">
+    <small class="text-muted">
+        <a class="" href = "{% url 'login-page' %}">Log in again ?</a>
+    </small>
+</div>
+<hr>
+<h4>Thank you for visiting here!</h4>
+{% endblock content%}

@@ -1,0 +1,83 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS-->
+    <!--
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    -->
+    <link href="{% static 'DEMOAPP/StyleSheet.css' %}" rel="stylesheet" type = "text/css"/>
+    {% if title %}
+        <title>{{title}}</title>
+    {% else %}
+        <title>Major Project</title>
+    {% endif %}
+
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+</head>
+<body>
+
+<header class="site-header">
+      <!-- USING BOOTSTRAP 3.0.3 -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="">Music Composition using Machine Learning</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav pull-right">
+            <li class="active"><a href="{% url 'home-page' %}">Home</a></li> <!-- url 'home-page' from urls.py -->
+            <li class=""><a href="{% url 'about-page' %}">About</a></li> <!-- url 'about-page' from urls.py -->
+            <li class=""><a href="{% url 'upload-page' %}">Upload</a></li>
+
+            {% if user.is_authenticated %}
+              <li class=""><a href="{% url 'profile-page' %}">Profile</a></li>
+                <li class=""><a href="{% url 'logout-page' %}">Logout</a></li>
+            {% else %}
+                <li class=""><a href="{% url 'login-page' %}">Login</a></li>
+                <li class=""><a href="{% url 'register-page' %}">Register</a></li>
+            {% endif %}
+            <!--<li><a href="#">Link</a></li> -->
+          </ul>
+        </div><!--/.nav-collapse -->
+
+      </div>
+    </nav>
+</header>
+
+<div class = "container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 " >
+            {% if messages %}
+                {% for message in messages %}
+                    <div class = "alert alert-{{ message.tags }}">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

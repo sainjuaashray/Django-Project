@@ -1,0 +1,14 @@
+{%extends "DEMOAPP/base.html" %}
+{% block content %}
+
+<div>
+    {% for post in posts%}
+    <h1> {{ post.auth }} </h1>
+    <small>Posted on: {{post.date_posted| date:"F d, Y"}}</small> <br><br>
+    <p>Title: {{post.title}}</p>
+    <p>Content: <br> {{ post.content }}.</p>
+    {%endfor%}
+</div>
+
+
+{% endblock content%}
