@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'knox',
 ]
 
 MIDDLEWARE = [
@@ -132,4 +134,18 @@ LOGIN_REDIRECT_URL = 'upload-page'
 
 LOGIN_URL = 'login-page'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'your email'
+EMAIL_HOST_PASSWORD = 'jvorhhvrzcagdwaq'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
 
