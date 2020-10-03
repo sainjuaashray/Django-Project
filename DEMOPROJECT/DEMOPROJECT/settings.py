@@ -139,7 +139,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your email'
-EMAIL_HOST_PASSWORD = 'jvorhhvrzcagdwaq'
+EMAIL_HOST_PASSWORD = 'your app password here'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
